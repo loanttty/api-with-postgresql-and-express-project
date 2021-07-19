@@ -9,8 +9,8 @@
     "test": "ENV=test db-migrate --env test up && jasmine-ts && db-migrate db:drop test",
     "tsc": "tsc"
   },
-  "author": "Udacity",
-  "license": "ISC",
+  "author": "LoanTT",
+  "license": "",
   "dependencies": {
     "@types/express": "^4.17.9",
     "@types/pg": "^7.14.7",
