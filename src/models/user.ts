@@ -1,4 +1,6 @@
 import client from '../database'
+import bcrypt from 'bcrypt'
+import { isParameterPropertyDeclaration, resolveModuleNameFromCache } from 'typescript'
 
 export type User = {
     id?: number,
@@ -41,15 +43,35 @@ export class UserList {
     async create(u: User): Promise<User> {
         try {
             const sql = 'INSERT INTO users (first_name, last_name, password) VALUES ($1, $2, $3) RETURNING *'
+            const saltRounds = (process.env.SALT_ROUNDS as unknown) as string
+            const pepper = process.env.BCRYPT_PASSWORD
+            const hash = bcrypt.hashSync(u.password + pepper,parseInt(saltRounds))
             
             const conn = await client.connect()
-            const result = await conn.query(sql,[u.first_name, u.last_name, u.password])
-            const user = result.rows[0]
+            const result = await conn.query(sql,[u.first_name, u.last_name, hash])
+            const newUser = result.rows[0]
             conn.release()
 
-            return user
+            return newUser
         } catch(err) {
             throw new Error(`Could not create new user: ${err}`)
         }
+    }
+
+    async authenticate (firstName: string, password: string): Promise<User | null> {
+        const sql = 'SELECT password FROM users WHERE first_name=($1)'
+        const pepper = process.env.BCRYPT_PASSWORD
+
+        const conn = await client.connect()
+        const result = await conn.query(sql,[firstName])
+
+        if (result.row.length) {
+            const user = result.row[0]
+            if(bcrypt.compareSync(password + pepper, user.password)) {
+                return user
+            }
+        }
+
+        return null
     }
 }
