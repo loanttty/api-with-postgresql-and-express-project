@@ -6,9 +6,9 @@ export class DashboardQueries {
   async productsByCat(category: string): Promise<Product[]> {
     try {
       const conn = await client.connect()
-      const sql = 'SELECT * FROM products WHERE products.category = ($1)'
-
-      const result = await conn.query(sql, [category])
+      const sql = 'SELECT * FROM products WHERE products.category=($1)'
+      
+      const result = await conn.query(sql,[category])
 
       conn.release()
 

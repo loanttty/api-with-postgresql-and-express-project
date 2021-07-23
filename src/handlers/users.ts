@@ -62,7 +62,7 @@ const verifyAuthUser = async (req:Request, res:Response, next: NextFunction) => 
 const users_routes = (app:express.Application) => {
     app.get('/users',verifyAuthUser,index)
     app.get('/user/:id',verifyAuthUser,show)
-    app.post('/create',verifyAuthUser,create)
+    app.post('/user/create',verifyAuthUser,create)
     app.get('/authenticate',authenticate)
 }
 

@@ -1,6 +1,5 @@
 import client from '../database'
 import bcrypt from 'bcrypt'
-import { isParameterPropertyDeclaration, resolveModuleNameFromCache } from 'typescript'
 
 export type User = {
     id?: number,
