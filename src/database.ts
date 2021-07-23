@@ -12,7 +12,7 @@ const {
     ENV
 } = process.env 
 
-let client
+let client : Pool | undefined
 console.log(ENV)
 
 if(ENV === 'dev') {
