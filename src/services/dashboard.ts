@@ -21,7 +21,7 @@ export class DashboardQueries {
   async topFivePopular(): Promise<{name: string, price: string, orderedQuantity: number}[]> {
     try {
       const conn = await client.connect()
-      const sql = 'SELECT name, price, SUM(orders.quantity) as orderedQuantity FROM products LEFT JOIN orders ON products.id = orders.product_id GROUP BY products.id DESC LIMIT 5'
+      const sql = 'SELECT name, price, SUM(orders.quantity) as orderedQuantity FROM products INNER JOIN orders ON products.id = orders.product_id GROUP BY products.id ORDER BY orderedQuantity DESC LIMIT 5'
 
       const result = await conn.query(sql)
 

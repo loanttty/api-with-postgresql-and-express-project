@@ -41,7 +41,9 @@ const authenticate = async (req:Request,res:Response) => {
      
     try {
         const authUser = await userlist.authenticate(req.body.first_name,req.body.password)
-        res.json(`Authenticated User!: ${authUser}`)
+        const TOKEN_SECRET = (process.env.TOKEN_SECRET as unknown) as Secret
+        const token = jwt.sign({user: authUser},TOKEN_SECRET)
+        res.json(`Authenticated User!: ${token}`)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -63,7 +65,7 @@ const users_routes = (app:express.Application) => {
     app.get('/users',verifyAuthUser,index)
     app.get('/user/:id',verifyAuthUser,show)
     app.post('/user/create',create)
-    app.get('/authenticate',authenticate)
+    app.get('/authenticate',verifyAuthUser,authenticate)
 }
 
 export default users_routes

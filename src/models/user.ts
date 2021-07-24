@@ -64,8 +64,8 @@ export class UserList {
         const conn = await client.connect()
         const result = await conn.query(sql,[firstName])
 
-        if (result.row.length) {
-            const user = result.row[0]
+        if (result.rows.length) {
+            const user = result.rows[0]
             if(bcrypt.compareSync(password + pepper, user.password)) {
                 return user
             }

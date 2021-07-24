@@ -44,10 +44,10 @@ export class Inventory {
             
             const conn = await client.connect()
             const result = await conn.query(sql,[p.name, p.price, p.category])
-            const book = result.rows[0]
+            const product = result.rows[0]
             conn.release()
 
-            return book
+            return product
         } catch(err) {
             throw new Error(`Could not create new product: ${err}`)
         }
