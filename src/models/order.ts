@@ -26,10 +26,10 @@ export class OrderList {
 
     async completeOrdersByUser(id:string): Promise<Order[]> {
         try {
-            const sql = 'SELECT * FROM orders WHERE user_id=($1) AND status="complete"'
             
             const conn = await client.connect()
-            const result = await conn.query(sql,[id])
+            const sql = 'SELECT * FROM orders WHERE user_id=($1) AND status=($2)'
+            const result = await conn.query(sql,[id,"complete"])
 
             conn.release()
 
