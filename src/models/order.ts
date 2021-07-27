@@ -46,9 +46,9 @@ export class OrderList {
 
     async create(o: Order): Promise<Order> {
         try {
-            const sql = 'INSERT INTO orders (status, user_id) VALUES($1, $2) RETURNING *'
+            const sql = 'INSERT INTO orders (status, user_id) VALUES ($1, $2) RETURNING *'
             //@ts-ignore
-            const conn = await Client.connect()
+            const conn = await client.connect()
 
             const result = await conn
                 .query(sql, [o.status, o.user_id])
@@ -66,7 +66,7 @@ export class OrderList {
     async addProduct(op: OrderedProduct): Promise<OrderedProduct> {
         //add products to an existing order
         try {
-            const sql = 'INSERT INTO order_products (quantity, order_id, product_id) VALUES($1, $2, $3) RETURNING *'
+            const sql = 'INSERT INTO order_product (quantity, order_id, product_id) VALUES($1, $2, $3) RETURNING *'
             const conn = await client.connect()
 
             const result = await conn.query(sql, [op.quantity, op.order_id, op.product_id])

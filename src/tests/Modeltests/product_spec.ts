@@ -1,4 +1,4 @@
-import { Product, Inventory } from "../models/product";
+import { Product, Inventory } from "../../models/product";
 
 const inventory = new Inventory()
 
@@ -22,15 +22,15 @@ describe ('Product Model', () => {
 
     it('create method should add a product', async () => {
         const result = await inventory.create({
-            name: 'Monitor',
+            name: "Monitor",
             price: 54,
-            category: 'Desktop'
+            category: "Desktop"
         })
         expect(result).toEqual({
             id: 1,
-            name: 'Monitor',
+            name: "Monitor",
             price: 54,
-            category: 'Desktop'
+            category: "Desktop"
         });
     })
 

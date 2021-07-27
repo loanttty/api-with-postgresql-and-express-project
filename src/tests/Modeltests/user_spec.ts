@@ -1,4 +1,4 @@
-import { User, UserList } from "../models/user";
+import { User, UserList } from "../../models/user";
 
 const list = new UserList()
 
@@ -22,15 +22,15 @@ describe ('User Model', () => {
 
     it('create method should add a user', async () => {
         const result = await list.create({
-            first_name: 'Juno',
-            last_name: 'Song',
-            password: 'ahihi123'
+            first_name: "Juno",
+            last_name: "Song",
+            password: "ahihi123"
         })
         expect(result).toEqual({
             id: 1,
-            first_name: 'Juno',
-            last_name: 'Song',
-            password: 'ahihi123'
+            first_name: "Juno",
+            last_name: "Song",
+            password: "ahihi123"
         });
     })
 

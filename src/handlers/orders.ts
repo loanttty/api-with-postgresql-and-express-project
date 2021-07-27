@@ -23,7 +23,7 @@ const completeOrdersByUser = async (req:Request,res:Response) => {
 const createOrder = async (req:Request,res:Response) => {   
     const newItem: Order = {
         status: req.body.status,
-        user_id: req.body.userId,
+        user_id: req.body.userId
     }
 
     try {
@@ -38,7 +38,7 @@ const addProduct = async (req:Request,res:Response) => {
     const newItem: OrderedProduct = {
         quantity: req.body.quantity,
         product_id: req.body.productId,
-        order_id: req.body.orderId,
+        order_id: req.body.orderId
     }
 
     try {

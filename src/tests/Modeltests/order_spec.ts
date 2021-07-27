@@ -1,4 +1,4 @@
-import { OrderList } from "../models/order";
+import { OrderList } from "../../models/order";
 
 const list = new OrderList()
 

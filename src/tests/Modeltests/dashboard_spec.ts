@@ -1,4 +1,4 @@
-import { DashboardQueries } from "../services/dashboard";
+import { DashboardQueries } from "../../services/dashboard";
 
 const queries = new DashboardQueries()
 
@@ -12,13 +12,13 @@ describe ('Dashboard Model', () => {
         expect(queries.topFivePopular).toBeDefined();
     });
 
-    it('productsByCat method should return a list of products under category "Speakers"', async () => {
-        const result = await queries.productsByCat("Speakers")
+    it('productsByCat method should return a list of products under category "Desktop"', async () => {
+        const result = await queries.productsByCat("Desktop")
         expect(result).toEqual([{
-            "id": 4,
-            "name": "Speaker",
-            "price": 99,
-            "category": "Speakers"
+            id: 1,
+            name: "Monitor",
+            price: 54,
+            category: "Desktop"
         }]);
     })
 
