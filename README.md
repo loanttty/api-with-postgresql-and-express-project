@@ -32,4 +32,4 @@ The following endpoints are available:
 
 Please use this .env below:
 
-`POSTGRES_HOST=localhost POSTGRES_DB=postgres POSTGRES_TEST_DB=store_front_test POSTGRES_DEV_USER=postgres POSTGRES_TEST_USER=test_user POSTGRES_PASSWORD=P@ssword123 ENV=dev BCRYPT_PASSWORD=do-not-give-up SALT_ROUNDS=9 TOKEN_SECRET=hello-whatsup`
+`POSTGRES_HOST=localhost <br> POSTGRES_DB=postgres POSTGRES_TEST_DB=store_front_test POSTGRES_DEV_USER=postgres POSTGRES_TEST_USER=test_user POSTGRES_PASSWORD=P@ssword123 ENV=dev BCRYPT_PASSWORD=do-not-give-up SALT_ROUNDS=9 TOKEN_SECRET=hello-whatsup`
