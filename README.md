@@ -2,13 +2,19 @@
 
 ## Getting Started
 
-Run `yarn install`
-Add `.env` file to the root of the project
-Create DB for test and development environment with credentials same as `database.json` file
-Run `db-migrate up` to set-up database tables
-Run `yarn start` to start the server. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-Or run `yarn test` to run through all endpoint test cases
-Or run `yarn watch` to start the server with tsc-watch
+###### Run `yarn install`
+
+###### Add `.env` file to the root of the project
+
+###### Create DB for test and development environment with credentials same as `database.json` file
+
+###### Run `db-migrate up` to set-up database tables
+
+###### Run `yarn start` to start the server. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+###### Or run `yarn test` to run through all endpoint test cases
+
+###### Or run `yarn watch` to start the server with tsc-watch
 
 ## API Endpoints:
 
@@ -32,4 +38,4 @@ The following endpoints are available:
 
 Please use this .env below:
 
-`POSTGRES_HOST=localhost <br> POSTGRES_DB=postgres POSTGRES_TEST_DB=store_front_test POSTGRES_DEV_USER=postgres POSTGRES_TEST_USER=test_user POSTGRES_PASSWORD=P@ssword123 ENV=dev BCRYPT_PASSWORD=do-not-give-up SALT_ROUNDS=9 TOKEN_SECRET=hello-whatsup`
+`POSTGRES_HOST=localhost POSTGRES_DB=postgres POSTGRES_TEST_DB=store_front_test POSTGRES_DEV_USER=postgres POSTGRES_TEST_USER=test_user POSTGRES_PASSWORD=P@ssword123 ENV=dev BCRYPT_PASSWORD=do-not-give-up SALT_ROUNDS=9 TOKEN_SECRET=hello-whatsup`
