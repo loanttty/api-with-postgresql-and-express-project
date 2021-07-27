@@ -33,6 +33,8 @@ The following endpoints are available:
 | `GET /authenticate`                   | Authenticate an existing user                   | **first_name** - [String] <br> **password** - [String]                               |
 | `GET /order/user/:id`                 | Get all orders by a particular user Id          |                                                                                      |
 | `GET /order/complete/user/:id`        | Get all complete orders by a particular user Id |                                                                                      |
+| `POST /order/create`                  | Add a new order                                 | **status** - [String] <br> **user_id** - [Number]                                    |
+| `POST /order/add-product`             | Add a new product to an existing order          | **quantity** - [Number] <br> **product_id** - [Number] <br> **order_id** - [Number]  |
 
 ## Note:
 

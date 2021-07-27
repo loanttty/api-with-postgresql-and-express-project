@@ -1,4 +1,4 @@
-import { User, UserList } from "../user";
+import { User, UserList } from "../models/user";
 
 const list = new UserList()
 

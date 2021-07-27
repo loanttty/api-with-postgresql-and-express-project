@@ -33,10 +33,12 @@ The following endpoints are available:
 
 The following endpoints are available:
 
-| Endpoints                      | Usage                                           | Params |
-| ------------------------------ | ----------------------------------------------- | ------ |
-| `GET /order/user/:id`          | Get all orders by a particular user Id          |        |
-| `GET /order/complete/user/:id` | Get all complete orders by a particular user Id |        |
+| Endpoints                      | Usage                                           | Params                                                                              |
+| ------------------------------ | ----------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `GET /order/user/:id`          | Get all orders by a particular user Id          |                                                                                     |
+| `GET /order/complete/user/:id` | Get all complete orders by a particular user Id |                                                                                     |
+| `POST /order/create`           | Add a new order                                 | **status** - [String] <br> **user_id** - [Number]                                   |
+| `POST /order/add-product`      | Add a new product to an existing order          | **quantity** - [Number] <br> **product_id** - [Number] <br> **order_id** - [Number] |
 
 ## Data Shapes
 
@@ -57,7 +59,12 @@ The following endpoints are available:
 #### Orders
 
     id SERIAL PRIMARY KEY,
-    product_id integer REFERENCES products(id),
-    user_id integer REFERENCES users(id),
-    quantity integer,
     status VARCHAR(20) NOT NULL CONSTRAINT invalid_status CHECK (status='complete' OR status='pending')
+    user_id integer REFERENCES users(id),
+
+#### Order_Product
+
+    id SERIAL PRIMARY KEY,
+    quantity integer,
+    product_id integer REFERENCES products(id),
+    order_id integer REFERENCES orders(id),

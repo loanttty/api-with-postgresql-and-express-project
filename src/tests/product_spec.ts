@@ -1,4 +1,4 @@
-import { Product, Inventory } from "../product";
+import { Product, Inventory } from "../models/product";
 
 const inventory = new Inventory()
 

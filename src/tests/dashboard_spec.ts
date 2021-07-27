@@ -1,4 +1,4 @@
-import { DashboardQueries } from "../dashboard";
+import { DashboardQueries } from "../services/dashboard";
 
 const queries = new DashboardQueries()
 
