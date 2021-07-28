@@ -26,23 +26,8 @@ describe ('Dashboard Model', () => {
         const result = await queries.topFivePopular()
         expect(result).toEqual([{
             "name": "Monitor",
-            "price": 52,
-            "ordered_quantity": 14
-        },
-        {
-            "name": "Keyboard",
-            "price": 23,
-            "ordered_quantity": 4
-        },
-        {
-            "name": "Speaker",
-            "price": 99,
+            "price": 54,
             "ordered_quantity": 2
-        },
-        {
-            "name": "Classic Piano",
-            "price": 198,
-            "ordered_quantity": 1
         }]);
     })
 
