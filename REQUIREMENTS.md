@@ -60,11 +60,11 @@ The following endpoints are available:
 
     id SERIAL PRIMARY KEY,
     status VARCHAR(20) NOT NULL CONSTRAINT invalid_status CHECK (status='complete' OR status='pending')
-    user_id integer REFERENCES users(id),
+    user_id integer REFERENCES users(id)
 
 #### Order_Product
 
     id SERIAL PRIMARY KEY,
     quantity integer,
     product_id integer REFERENCES products(id),
-    order_id integer REFERENCES orders(id),
+    order_id integer REFERENCES orders(id)

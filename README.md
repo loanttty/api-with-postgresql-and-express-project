@@ -12,9 +12,9 @@
 
 ###### Run `yarn start` to start the server. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-###### Or run `yarn test` to run through all endpoint test cases
-
 ###### Or run `yarn watch` to start the server with tsc-watch
+
+###### Or run `yarn test` to run through all endpoint and model test cases
 
 ## API Endpoints:
 
