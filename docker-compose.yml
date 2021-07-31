@@ -8,13 +8,11 @@ services:
     env_file:
       - .env
     volumes:
-      - 'pgdata/:/var/lib/postgresql/data'
+      - './pgdata/:/var/lib/postgresql/data:rw'
   
   pg_admin:
     image: thajeztah/pgadmin4
     ports:
       - '50:50'
-    env_file:
-      - .env
     volumes:
-      - 'pgdata/:/var/lib/postgresql/data'
+      - './pgdata/:/var/lib/postgresql/data'

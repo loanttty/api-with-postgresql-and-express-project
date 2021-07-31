@@ -6,7 +6,7 @@
 
 ###### Add `.env` file to the root of the project
 
-###### Create DB for test and development environment in Docker with credentials same as `docker-compose.yml` file
+###### Run `docker-compose up` to set test and development environment in Docker with credentials docker-compose.yml` file
 
 ###### Run `db-migrate up` to set-up database tables
 
@@ -42,4 +42,13 @@ The following endpoints are available:
 
 Please use this .env below:
 
-`POSTGRES_HOST=localhost POSTGRES_DB=postgres POSTGRES_TEST_DB=store_front_test POSTGRES_DEV_USER=postgres POSTGRES_TEST_USER=test_user POSTGRES_PASSWORD=P@ssword222 ENV=dev BCRYPT_PASSWORD=do-not-give-up SALT_ROUNDS=9 TOKEN_SECRET=hello-whatsup`
+`POSTGRES_HOST=localhost
+POSTGRES_DB=postgres
+POSTGRES_TEST_DB=postgres
+POSTGRES_DEV_USER=postgres
+POSTGRES_TEST_USER=postgres
+POSTGRES_PASSWORD=P@ssword222
+ENV=dev
+BCRYPT_PASSWORD=do-not-give-up
+SALT_ROUNDS=9
+TOKEN_SECRET=hello-whatsup`
