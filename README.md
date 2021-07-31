@@ -6,15 +6,17 @@
 
 ###### Add `.env` file to the root of the project
 
-###### Create DB for test and development environment with credentials same as `database.json` file
+###### Create DB for test and development environment in Docker with credentials same as `docker-compose.yml` file
 
 ###### Run `db-migrate up` to set-up database tables
+
+###### Run `yarn compile` to compile the app to .js 
 
 ###### Run `yarn start` to start the server. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ###### Or run `yarn watch` to start the server with tsc-watch
 
-###### Or run `yarn test` to run through all endpoint and model test cases
+###### Or run `yarn test` to run through all test cases of endpoints and models
 
 ## API Endpoints:
 
@@ -40,4 +42,4 @@ The following endpoints are available:
 
 Please use this .env below:
 
-`POSTGRES_HOST=localhost POSTGRES_DB=postgres POSTGRES_TEST_DB=store_front_test POSTGRES_DEV_USER=postgres POSTGRES_TEST_USER=test_user POSTGRES_PASSWORD=P@ssword123 ENV=dev BCRYPT_PASSWORD=do-not-give-up SALT_ROUNDS=9 TOKEN_SECRET=hello-whatsup`
+`POSTGRES_HOST=localhost POSTGRES_DB=postgres POSTGRES_TEST_DB=store_front_test POSTGRES_DEV_USER=postgres POSTGRES_TEST_USER=test_user POSTGRES_PASSWORD=P@ssword222 ENV=dev BCRYPT_PASSWORD=do-not-give-up SALT_ROUNDS=9 TOKEN_SECRET=hello-whatsup`

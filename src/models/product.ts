@@ -52,4 +52,20 @@ export class Inventory {
             throw new Error(`Could not create new product: ${err}`)
         }
     }
+
+    // Get all products under specific category
+    async productsByCat(category: string): Promise<Product[]> {
+        try {
+        const conn = await client.connect()
+        const sql = 'SELECT * FROM products WHERE products.category=($1)'
+        
+        const result = await conn.query(sql,[category])
+
+        conn.release()
+
+        return result.rows
+        } catch (err) {
+        throw new Error(`unable get any products under category ${category}: ${err}`)
+        } 
+    }
 }

@@ -7,7 +7,8 @@ const inventory = new Inventory()
 const index = async (_req:Request,res:Response) => {
     try {
         const products = await inventory.index()
-        res.json(products)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(products)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -16,7 +17,8 @@ const index = async (_req:Request,res:Response) => {
 const show = async (req:Request,res:Response) => {
     try {
         const productById = await inventory.show(req.params.id)
-        res.json(productById)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(productById)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -31,11 +33,17 @@ const create = async (req:Request, res:Response) => {
 
     try {
         const newProductAdded = await inventory.create(newProduct)
-        res.json(newProductAdded)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(newProductAdded)
     } catch(err) {
         res.status(400).json(err)
-        return
     }
+}
+
+const productsByCaterogy = async (req: Request, res: Response) => {
+    const products = await inventory.productsByCat(req.params.category)
+    // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+    return res.json(products)
 }
 
 const verifyAuthUser = async (req:Request, res:Response, next: NextFunction) => {
@@ -45,7 +53,8 @@ const verifyAuthUser = async (req:Request, res:Response, next: NextFunction) => 
         const token = authorizationHeader.split(' ')[1]
         jwt.verify(token,TOKEN_SECRET)
     } catch(err) {
-        res.status(401).json(err)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.status(401).json(err)
     }
     next()
 }
@@ -54,6 +63,7 @@ const products_routes = (app:express.Application) => {
     app.get('/products',index)
     app.get('/product/:id',show)
     app.post('/create',verifyAuthUser,create)
+    app.get('/products-by-category/:category', productsByCaterogy)
 }
 
 export default products_routes

@@ -15,10 +15,9 @@ describe ('Product Model', () => {
         expect(inventory.create).toBeDefined();
     });
 
-    it('index method should return a list of products', async () => {
-        const result = await inventory.index()
-        expect(result).toEqual([]);
-    })
+    it('should have a productsByCat method', () => {
+        expect(inventory.productsByCat).toBeDefined();
+    });
 
     it('create method should add a product', async () => {
         const result = await inventory.create({
@@ -27,31 +26,31 @@ describe ('Product Model', () => {
             category: "Desktop"
         })
         expect(result).toEqual({
-            id: 1,
+            id: result.id,
             name: "Monitor",
             price: 54,
             category: "Desktop"
         });
     })
 
-    it('index method should show all products', async () => {
-        const result = await inventory.index()
-        expect(result).toEqual([{
-            id: 1,
-            name: 'Monitor',
+    it('show method should return the correct product', async () => {
+        const result = await inventory.show("2")
+        expect(result).toEqual({
+            id: 2,
+            name: "Monitor",
             price: 54,
-            category: 'Desktop'
-        }]);
+            category: "Desktop"
+        });
     })
 
-    it('show method should return the correct product', async () => {
-        const result = await inventory.show('1')
-        expect(result).toEqual({
-            id: 1,
-            name: 'Monitor',
-            price: 54,
-            category: 'Desktop'
-        });
+    it('index method should return a list of products', async () => {
+        const result = await inventory.index()
+        expect(result.length).toBeGreaterThan(0);
+    })
+
+    it('productsByCat method should return a list of products under category "Desktop"', async () => {
+        const result = await inventory.productsByCat("Desktop")
+        expect(result.length).toBeGreaterThan(0);
     })
 
 })

@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - '5432:5432'
+    env_file:
+      - .env
+    volumes:
+      - 'pgdata/:/var/lib/postgresql/data'
+  
+  pg_admin:
+    image: thajeztah/pgadmin4
+    ports:
+      - '50:50'
+    env_file:
+      - .env
+    volumes:
+      - 'pgdata/:/var/lib/postgresql/data'

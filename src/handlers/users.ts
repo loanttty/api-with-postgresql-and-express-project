@@ -7,7 +7,8 @@ const userlist = new UserList()
 const index = async (_req:Request,res:Response) => {
     try {
         const users = await userlist.index()
-        res.json(users)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(users)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -15,7 +16,8 @@ const index = async (_req:Request,res:Response) => {
 const show = async (req:Request,res:Response) => {
     try {
         const userById = await userlist.show(req.params.id)
-        res.json(userById)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(userById)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -31,7 +33,8 @@ const create = async (req:Request,res:Response) => {
     try {
         const newUserAdded = await userlist.create(newUser)
         const token = jwt.sign({user: newUserAdded},TOKEN_SECRET)
-        res.json(token)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(token)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -43,7 +46,8 @@ const authenticate = async (req:Request,res:Response) => {
         const authUser = await userlist.authenticate(req.body.first_name,req.body.password)
         const TOKEN_SECRET = (process.env.TOKEN_SECRET as unknown) as Secret
         const token = jwt.sign({user: authUser},TOKEN_SECRET)
-        res.json(`Authenticated User!: ${token}`)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(`Authenticated User!: ${token}`)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -56,7 +60,8 @@ const verifyAuthUser = async (req:Request, res:Response, next: NextFunction) => 
         const token = authorizationHeader.split(' ')[1]
         jwt.verify(token,TOKEN_SECRET)
     } catch(err) {
-        res.status(401).json(err)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.status(401).json(err)
     }
     next()
 }

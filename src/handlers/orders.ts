@@ -7,7 +7,8 @@ const orderlist = new OrderList()
 const ordersByUser = async (req:Request,res:Response) => {
     try {
         const ordersByUser = await orderlist.ordersByUser(req.params.id)
-        res.json(ordersByUser)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(ordersByUser)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -15,7 +16,8 @@ const ordersByUser = async (req:Request,res:Response) => {
 const completeOrdersByUser = async (req:Request,res:Response) => {   
     try {
         const completeOrdersByUser = await orderlist.completeOrdersByUser(req.params.id)
-        res.json(completeOrdersByUser)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(completeOrdersByUser)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -28,7 +30,8 @@ const createOrder = async (req:Request,res:Response) => {
 
     try {
         const newOrder = await orderlist.create(newItem)
-        res.json(newOrder)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(newOrder)
     } catch(err) {
         res.status(400).json(err)
     }
@@ -43,10 +46,17 @@ const addProduct = async (req:Request,res:Response) => {
 
     try {
         const addedProd = await orderlist.addProduct(newItem)
-        res.json(addedProd)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.json(addedProd)
     } catch(err) {
         res.status(400).json(err)
     }
+}
+
+const topFivePopular = async (_req: Request, res: Response) => {
+    const products = await orderlist.topFivePopular()
+    // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+    return res.json(products)
 }
 
 const verifyAuthUser = async (req:Request, res:Response, next: NextFunction) => {
@@ -56,7 +66,8 @@ const verifyAuthUser = async (req:Request, res:Response, next: NextFunction) => 
         const token = authorizationHeader.split(' ')[1]
         jwt.verify(token,TOKEN_SECRET)
     } catch(err) {
-        res.status(401).json(err)
+        // add "return" to avoid error "[ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"
+        return res.status(401).json(err)
     }
     next()
 }
@@ -66,6 +77,7 @@ const orders_routes = (app:express.Application) => {
     app.get('/order/complete/user/:id',verifyAuthUser,completeOrdersByUser)
     app.post('/order/create',verifyAuthUser,createOrder)
     app.post('/order/add-product',verifyAuthUser,addProduct)
+    app.get('/top-five-products', topFivePopular)
 }
 
 export default orders_routes
