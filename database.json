@@ -8,7 +8,7 @@
   },
   "test": {
     "driver": "pg",
-    "host": "locahost",
+    "host": "localhost",
     "database": "postgres",
     "user": "postgres",
     "password": "P@ssword222"

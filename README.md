@@ -6,7 +6,7 @@
 
 ###### Add `.env` file to the root of the project
 
-###### Run `docker-compose up` to set test and development environment in Docker with credentials docker-compose.yml` file
+###### Run `docker-compose up` to set test and development environment in Docker with credentials `docker-compose.yml` file
 
 ###### Run `db-migrate up` to set-up database tables
 
