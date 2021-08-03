@@ -38,17 +38,3 @@ The following endpoints are available:
 | `POST /order/create`                  | Add a new order                                 | **status** - [String] <br> **user_id** - [Number]                                    |
 | `POST /order/add-product`             | Add a new product to an existing order          | **quantity** - [Number] <br> **product_id** - [Number] <br> **order_id** - [Number]  |
 
-## Note:
-
-Please use this .env below:
-
-`POSTGRES_HOST=localhost
-POSTGRES_DB=postgres
-POSTGRES_TEST_DB=postgres
-POSTGRES_DEV_USER=postgres
-POSTGRES_TEST_USER=postgres
-POSTGRES_PASSWORD=P@ssword222
-ENV=dev
-BCRYPT_PASSWORD=do-not-give-up
-SALT_ROUNDS=9
-TOKEN_SECRET=hello-whatsup`
